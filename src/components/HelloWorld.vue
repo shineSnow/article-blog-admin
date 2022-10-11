@@ -1,9 +1,10 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { defineComponent, ref } from 'vue';
 
   defineProps<{ msg: string }>();
 
   const count = ref(0);
+  export default defineComponent({});
 </script>
 
 <template>
