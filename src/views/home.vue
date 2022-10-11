@@ -8,13 +8,11 @@
       <el-button type="warning">Warning</el-button>
       <el-button type="danger">Danger</el-button>
     </el-row>
-    <el-input v-model="input" placeholder="Please input" />
+    <el-input v-model="input" placeholder="Please inpuaat" />
   </div>
-  <HelloWorld msg="hello vue3 vite" />
 </template>
 
 <script setup lang="ts">
-  import HelloWorld from '@/components/HelloWorld.vue';
   import { ref } from 'vue';
   const input = ref('');
 </script>
