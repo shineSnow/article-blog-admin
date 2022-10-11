@@ -1,5 +1,6 @@
-import { ExtractDefaultPropTypes } from 'vue';
 import { createStore } from 'vuex';
+
+import layout from './modules/layout';
 
 const defaultState = {
   count: 0
@@ -25,5 +26,8 @@ export default createStore({
     double(state: typeof defaultState) {
       return 2 * state.count;
     }
+  },
+  modules: {
+    layout
   }
 });
