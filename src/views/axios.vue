@@ -1,5 +1,5 @@
 <template>
-  <div class="axios">axios</div>
+  <div class="axios">axios is a request tool</div>
 </template>
 
 <script lang="ts">
