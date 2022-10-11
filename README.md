@@ -1,9 +1,6 @@
 # article-blog-admin
 
-
-vue3博客管理后台
-
-
+vue3 博客管理后台
 
 # Vue 3 + TypeScript + Vite
 
@@ -22,3 +19,6 @@ Since TypeScript cannot handle type information for `.vue` imports, they are shi
 
 You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
 
+# Eslint + Prettier
+
+https://cloud.tencent.com/developer/article/1976273
