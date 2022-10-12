@@ -15,7 +15,7 @@
           <MenuTab></MenuTab>
         </div>
         <el-main>
-          <router-view />
+          <slot></slot>
         </el-main>
         <el-footer>Footer</el-footer>
       </el-container>

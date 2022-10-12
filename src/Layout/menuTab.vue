@@ -50,6 +50,7 @@
 </script>
 <style lang="scss" scoped>
   .tab-section {
+    height: 46px;
     overflow: hidden;
     .router-tabs > .el-tabs__content {
       padding: 32px;
