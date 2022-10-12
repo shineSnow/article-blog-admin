@@ -3,7 +3,7 @@
     <el-sub-menu index="1">
       <template #title>
         <el-icon><location /></el-icon>
-        <span>Navigator One</span>
+        <span>header中参数 {{ count }}</span>
       </template>
       <el-menu-item-group title="Group One">
         <el-menu-item index="1-1">item one</el-menu-item>
@@ -34,6 +34,10 @@
 
 <script setup lang="ts">
   import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue';
+  import { mainStore } from '@/store/index';
+  import { storeToRefs } from 'pinia';
+  const mainStoreI = mainStore();
+  const { count, foo, age } = storeToRefs(mainStoreI);
   const handleOpen = (key: string, keyPath: string[]) => {
     console.log(key, keyPath);
   };

@@ -2,28 +2,25 @@
   <div class="header-section">
     <div class="header-left">
       <el-icon size="22px" @click="navToggle">
-        <Fold v-if="isExpand" />
+        <Fold v-if="true" />
         <Expand v-else />
       </el-icon>
     </div>
-    <div class="header-content">header-content {{ isExpand }}</div>
+    <div class="header-content">header-content store中的數據count:{{ count }}</div>
     <div class="header-right">header-right</div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { Fold, Expand } from '@element-plus/icons-vue';
-  import { computed } from 'vue';
-  import { useStore } from 'vuex';
-  const store = useStore();
-  const isExpand = computed(() => {
-    console.log(store.state);
+  import { mainStore } from '@/store/index';
+  import { storeToRefs } from 'pinia';
 
-    return store.state.layout.isMenuExpand;
-  });
+  const mainStoreI = mainStore();
+  const { count, foo, age } = storeToRefs(mainStoreI);
 
   function navToggle() {
-    store.commit('layout/toggleMenu');
+    count.value++;
   }
 </script>
 
