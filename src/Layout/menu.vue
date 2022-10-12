@@ -1,5 +1,16 @@
 <template>
-  <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose">
+  <el-menu
+    active-text-color="#ffd04b"
+    background-color="#545c64"
+    class="el-menu-vertical"
+    default-active="2"
+    text-color="#fff"
+    @open="handleOpen"
+    @close="handleClose"
+    :collapse="collapse"
+  >
+    <div class="logo-section">{{ collapse ? 'logo' : '中策管理后台' }}</div>
+
     <el-sub-menu index="1">
       <template #title>
         <el-icon><location /></el-icon>
@@ -34,10 +45,12 @@
 
 <script setup lang="ts">
   import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue';
-  import { mainStore } from '@/store/index';
   import { storeToRefs } from 'pinia';
-  const mainStoreI = mainStore();
-  const { count, foo, age } = storeToRefs(mainStoreI);
+  import { useMenuStore } from '@/store/menu';
+
+  const menuStore = useMenuStore();
+  const { collapse } = storeToRefs(menuStore);
+
   const handleOpen = (key: string, keyPath: string[]) => {
     console.log(key, keyPath);
   };
@@ -45,4 +58,19 @@
     console.log(key, keyPath);
   };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  .logo-section {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    background-color: #545c64;
+    color: #fff;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+  .el-menu-vertical {
+    height: 100%;
+  }
+</style>

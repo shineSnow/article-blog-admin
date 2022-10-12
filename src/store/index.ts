@@ -22,7 +22,7 @@ export const mainStore = defineStore('main', {
    */
   state: () => {
     return {
-      count: 100,
+      count: 10011,
       foo: 'bar',
       age: 18
     };
