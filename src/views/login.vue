@@ -1,16 +1,24 @@
 <template>
-  <div class="login-page flex justify-center items-center">
-    <el-card class="login-card">
-      <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
-    </el-card>
+  <div class="login_page flex justify-center items-center bg-login-page">
+    <el-card class="login-card"> </el-card>
   </div>
 </template>
+<script setup lang="ts">
+  import { fetchPageBg } from '@/api/comment';
+  import pageBgImg from '@/assets/page-bg.jpg';
+  import { ref, reactive } from 'vue';
 
-<script setup lang="ts"></script>
+  const bgStyle = reactive({
+    backgroundImg: 'http://img.xjh.me/img/59248358_p0.jpg'
+  });
 
-<style lang="scss" scoped>
-  .login-page {
+  const bgImgSrc = ref('http://img.xjh.me/img/59248358_p0.jpg');
+</script>
+
+<style scoped lang="scss">
+  .login_page {
     height: 100vh;
+    background-size: cover;
     .login-card {
       width: 600px;
       height: 320px;
