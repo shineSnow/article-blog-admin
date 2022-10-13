@@ -1,8 +1,5 @@
 <template>
   <router-view />
-  <Layout>
-    <router-view />
-  </Layout>
 </template>
 
 <script setup lang="ts">
@@ -10,7 +7,7 @@
   import { useRoute } from 'vue-router  ';
 
   const route = useRoute();
-  console.log('route', route);
+  console.log('route.meta', route.meta);
 </script>
 
 <style scoped lang="scss"></style>

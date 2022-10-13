@@ -15,7 +15,7 @@
           <MenuTab></MenuTab>
         </div>
         <el-main>
-          <slot></slot>
+          <router-view :key="$route.path"></router-view>
         </el-main>
         <el-footer>Footer</el-footer>
       </el-container>
