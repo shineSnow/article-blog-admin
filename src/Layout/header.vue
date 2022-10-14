@@ -7,11 +7,11 @@
       </el-icon>
     </div>
     <div class="header-content">
-      <p>欢迎您，管理员</p>
+      <p>欢迎您，{{ `${roleInfo.name} ${userInfo.username}` }}</p>
     </div>
     <div class="header-right">
       <div>
-        <el-dropdown>
+        <el-dropdown @command="dropDwodnClick">
           <span class="el-dropdown-link">
             <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
             <span>13185226548</span>
@@ -21,11 +21,7 @@
           </span>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item>Action 1</el-dropdown-item>
-              <el-dropdown-item>Action 2</el-dropdown-item>
-              <el-dropdown-item>Action 3</el-dropdown-item>
-              <el-dropdown-item disabled>Action 4</el-dropdown-item>
-              <el-dropdown-item divided>Action 5</el-dropdown-item>
+              <el-dropdown-item command="logout">退出</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -39,11 +35,22 @@
   import { mainStore } from '@/store/index';
   import { useMenuStore } from '@/store/menu';
   import { storeToRefs } from 'pinia';
+  import { wsCache } from '@/utils/web-storage-cache';
+  import { useRouter } from 'vue-router';
 
   const menuStore = useMenuStore();
+  const router = useRouter();
+
+  const { userInfo, roleInfo } = storeToRefs(menuStore);
 
   function navToggle() {
     menuStore.toggleMenu();
+  }
+  function dropDwodnClick(params: string) {
+    if (params === 'logout') {
+      wsCache.clear();
+      router.push({ path: '/login' });
+    }
   }
 </script>
 

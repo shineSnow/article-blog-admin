@@ -16,16 +16,15 @@ export default defineConfig({
   server: {
     port: 4000,
     open: true,
-    cors: true
-
+    cors: true,
     // 设置代理，根据我们项目实际情况配置
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://xxx.xxx.xxx.xxx:8000',
-    //     changeOrigin: true,
-    //     secure: false,
-    //     rewrite: (path) => path.replace('/api/', '/')
-    //   }
-    // }
+    proxy: {
+      '/api': {
+        target: 'http://localhost:9000',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace('/api/', '/')
+      }
+    }
   }
 });
