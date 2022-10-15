@@ -3,6 +3,7 @@ const defaultState = {
 };
 
 const layoutModule = {
+  namespaced: true,
   state() {
     return defaultState;
   },
