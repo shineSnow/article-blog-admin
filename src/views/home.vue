@@ -1,14 +1,6 @@
 <template>
   <div class="home">
-    <el-row class="mb-4">
-      <el-button>Default</el-button>
-      <el-button type="primary">Primary</el-button>
-      <el-button type="success">Success</el-button>
-      <el-button type="info">Info</el-button>
-      <el-button type="warning">Warning</el-button>
-      <el-button type="danger">Danger</el-button>
-    </el-row>
-    <el-input v-model="input" placeholder="Please inpuaat" />
+    <h6>首页</h6>
   </div>
 </template>
 
@@ -19,9 +11,9 @@
 
 <style lang="scss" scoped>
   .home {
-    height: 100%;
+    height: 900px;
     color: #000;
-    display: flex;
-    align-items: center;
+    border: 1px solid red;
+    background-color: #fff;
   }
 </style>

@@ -1,10 +1,14 @@
 import { createApp } from 'vue';
-import 'tailwindcss/tailwind.css';
 import './style.css';
+import 'tailwindcss/tailwind.css';
 import App from './App.vue';
 import router from './router/index';
-import store from './store/index';
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 
-createApp(App).use(router).use(store).use(ElementPlus).mount('#app');
+import { createPinia } from 'pinia';
+
+// 创建 Pinia 实例
+const pinia = createPinia();
+
+createApp(App).use(router).use(pinia).use(ElementPlus).mount('#app');

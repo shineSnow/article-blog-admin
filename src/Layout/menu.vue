@@ -1,15 +1,20 @@
 <template>
   <el-menu
+    active-text-color="#ffd04b"
+    background-color="#545c64"
+    class="el-menu-vertical"
     default-active="2"
-    class="el-menu-vertical-demo"
+    text-color="#fff"
     @open="handleOpen"
     @close="handleClose"
-    :collapse="store.state.layout.isExpand"
+    :collapse="collapse"
   >
+    <div class="logo-section">{{ collapse ? 'logo' : '中策管理后台' }}</div>
+
     <el-sub-menu index="1">
       <template #title>
         <el-icon><location /></el-icon>
-        <span>Navigator One</span>
+        <span>header中参数 {{ count }}</span>
       </template>
       <el-menu-item-group title="Group One">
         <el-menu-item index="1-1">item one</el-menu-item>
@@ -40,10 +45,12 @@
 
 <script setup lang="ts">
   import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue';
-  import { computed, ref } from 'vue';
-  import { useStore } from '../store/index';
+  import { storeToRefs } from 'pinia';
+  import { useMenuStore } from '@/store/menu';
 
-  const store = useStore();
+  const menuStore = useMenuStore();
+  const { collapse } = storeToRefs(menuStore);
+
   const handleOpen = (key: string, keyPath: string[]) => {
     console.log(key, keyPath);
   };
@@ -53,4 +60,19 @@
 
   const isExpand = ref(store.state.layout.isExpand);
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+  .logo-section {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    background-color: #545c64;
+    color: #fff;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+  .el-menu-vertical {
+    height: 100%;
+  }
+</style>

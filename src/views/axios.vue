@@ -4,7 +4,7 @@
 
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import axios from '../utils/axios';
+  import axios from '../utils/request';
 
   export default defineComponent({
     setup() {
