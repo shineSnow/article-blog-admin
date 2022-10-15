@@ -33,14 +33,15 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   (response) => {
     console.log('API RESPONSE', response);
-    if (response.data) {
-      const { code, data, msg } = response.data;
+    if (!response.data) {
+      return Promise.reject();
+    }
+    const { code, data, msg } = response.data;
 
-      if (code !== 200) {
-        ElMessage.error(` Message: ${msg}`);
-        console.error(`[Axios Error]`, data);
-        return Promise.reject({ status: code, message: msg });
-      }
+    if (code !== 200) {
+      ElMessage.error(` Message: ${msg}`);
+      console.error(`[Axios Error]`, data);
+      return Promise.reject({ status: code, message: msg });
     }
     return response.data;
   },

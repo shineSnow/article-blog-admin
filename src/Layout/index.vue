@@ -2,7 +2,7 @@
   <div class="layout">
     <el-container>
       <el-aside :width="collapse ? 'fit-content' : '200px'">
-        <Menu></Menu>
+        <Menu />
       </el-aside>
       <el-container>
         <el-header>
@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-  import Menu from './menu.vue';
+  import Menu from './menu/menu.vue';
   import Header from './header.vue';
   import MenuTab from './menuTab.vue';
   import { useMenuStore } from '@/store/menu';

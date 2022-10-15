@@ -27,6 +27,27 @@ const dynmicRoutes = [
       }
     ]
   },
+  {
+    path: '/system',
+    component: Layout,
+    children: [
+      {
+        path: 'user/list',
+        name: 'user-management',
+        component: () => import('@/views/system/user-management.vue')
+      },
+      {
+        path: 'role/list',
+        name: 'role-management',
+        component: () => import('@/views/system/role-management.vue')
+      },
+      {
+        path: 'permission/list',
+        name: 'perm-management',
+        component: () => import('@/views/system/perm-management.vue')
+      }
+    ]
+  },
   // 404 page must be placed at the end !!!
   { path: '/:catchAll(.*)', redirect: '/404', hidden: true }
 ];

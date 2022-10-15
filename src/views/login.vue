@@ -25,7 +25,7 @@
   import type { FormInstance, FormRules } from 'element-plus';
   import { ElMessage } from 'element-plus';
   import { useRouter } from 'vue-router';
-  import { useMenuStore, menuStore } from '@/store/menu';
+  import { useMenuStore } from '@/store/menu';
   import { wsCache } from '@/utils/web-storage-cache';
 
   const router = useRouter();
@@ -46,7 +46,7 @@
   /**
    * 登录
    */
-  const submitForm = async (formEl: FormInstance | undefined) => {
+  const submitForm = async (formEl: FormInstance) => {
     await formEl.validate(async (valid, fields) => {
       if (valid) {
         const { data } = await login(loginForm);
