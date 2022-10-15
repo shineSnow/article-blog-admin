@@ -47,6 +47,9 @@
   import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue';
   import { storeToRefs } from 'pinia';
   import { useMenuStore } from '@/store/menu';
+  import { count } from 'console';
+  import store from 'element-plus/es/components/table/src/store';
+  import { ref } from 'vue';
 
   const menuStore = useMenuStore();
   const { collapse } = storeToRefs(menuStore);
@@ -57,8 +60,6 @@
   const handleClose = (key: string, keyPath: string[]) => {
     console.log(key, keyPath);
   };
-
-  const isExpand = ref(store.state.layout.isExpand);
 </script>
 <style lang="scss" scoped>
   .logo-section {

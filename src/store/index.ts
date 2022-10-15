@@ -37,12 +37,3 @@ export const mainStore = defineStore('main', {
    */
   actions: {}
 });
-
-export const key: InjectionKey<typeof allStore> = Symbol();
-
-// 定义自己的 `useStore` 组合式函数
-export function useStore() {
-  return baseUseStore(key);
-}
-
-export default allStore;
