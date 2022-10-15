@@ -32,7 +32,7 @@
 
   const loginFormRef = ref<FormInstance>();
 
-  const formSize = ref('default');
+  const formSize = ref('large');
 
   const loginForm = reactive({ username: '', password: '' });
 
