@@ -1,61 +1,61 @@
 <template>
-  <div class="tab-section">
-    <el-tabs v-model="editableTabsValue" type="card" class="router-tabs" closable @tab-remove="removeTab">
-      <el-tab-pane v-for="item in editableTabs" :key="item.name" :label="item.title" :name="item.name"> </el-tab-pane>
-    </el-tabs>
+  <div class="menu-tag flex items-center">
+    <div class="left">
+      <el-icon><ArrowLeft /></el-icon>
+    </div>
+    <el-scrollbar>
+      <div class="scrollbar-flex-content">
+        <router-link v-for="item in menuTags" :to="item.fullPath" :key="item.fullPath">
+          <p class="scrollbar-item">
+            {{ item.title }}
+          </p>
+        </router-link>
+      </div>
+    </el-scrollbar>
+    <div class="right">
+      <el-icon><ArrowRight /></el-icon>
+    </div>
   </div>
 </template>
-<script lang="ts" setup>
-  import { ref } from 'vue';
 
-  let tabIndex = 2;
-  const editableTabsValue = ref('2');
-  const editableTabs = ref([
-    {
-      title: '首页',
-      name: '1'
-    },
-    {
-      title: 'Tab 2',
-      name: '2'
-    }
-  ]);
-
-  const addTab = (targetName: string) => {
-    const newTabName = `${++tabIndex}`;
-    editableTabs.value.push({
-      title: 'New Tab',
-      name: newTabName,
-      content: 'New Tab content'
-    });
-    editableTabsValue.value = newTabName;
-  };
-  const removeTab = (targetName: string) => {
-    const tabs = editableTabs.value;
-    let activeName = editableTabsValue.value;
-    if (activeName === targetName) {
-      tabs.forEach((tab, index) => {
-        if (tab.name === targetName) {
-          const nextTab = tabs[index + 1] || tabs[index - 1];
-          if (nextTab) {
-            activeName = nextTab.name;
-          }
-        }
-      });
-    }
-
-    editableTabsValue.value = activeName;
-    editableTabs.value = tabs.filter((tab) => tab.name !== targetName);
-  };
+<script setup lang="ts">
+  import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue';
+  import { useRoute } from 'vue-router';
+  import { useMenuStore } from '@/store/menu';
+  import { storeToRefs } from 'pinia';
+  import { watch } from 'vue';
+  const route = useRoute();
+  const menuStore = useMenuStore();
+  const { menuTags } = storeToRefs(menuStore);
+  watch(route, async (newRoute) => {
+    console.log(newRoute);
+    menuStore.addMenuTag(newRoute);
+  });
 </script>
+
 <style lang="scss" scoped>
-  .tab-section {
-    height: 46px;
-    overflow: hidden;
-    .router-tabs > .el-tabs__content {
-      padding: 32px;
-      color: #6b778c;
-      font-size: 32px;
+  .menu-tag {
+    .left {
+      padding: 0 3px;
+    }
+    .right {
+      padding: 0 3px;
+    }
+    .scrollbar-flex-content {
+      display: flex;
+    }
+    .scrollbar-item {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 100px;
+      height: 36px;
+      margin: 10px;
+      text-align: center;
+      border-radius: 4px;
+      background: var(--el-color-primary-light-9);
+      color: var(--el-color-primary);
     }
   }
 </style>

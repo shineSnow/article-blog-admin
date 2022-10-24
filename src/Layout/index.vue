@@ -8,10 +8,7 @@
         <el-header>
           <Header></Header>
         </el-header>
-        <div
-          class="menu-tab-section"
-          :style="{ left: collapse ? '64px' : '', width: collapse ? 'calc(100% -64px)' : '' }"
-        >
+        <div class="menu-tab-section">
           <MenuTab></MenuTab>
         </div>
         <el-main>
@@ -43,18 +40,7 @@
       box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
     }
     .el-main {
-      padding-top: 60px;
       background-color: #f5f7f9;
-    }
-    .menu-tab-section {
-      position: fixed;
-      width: calc(100% - 200px);
-      z-index: 3;
-      top: 60px;
-      padding-top: 6px;
-      left: 200px;
-      background-color: #f5f7f9;
-      transition: all 0.3s ease-in-out;
     }
   }
 </style>

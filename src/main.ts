@@ -8,7 +8,10 @@ import 'element-plus/dist/index.css';
 
 import { createPinia } from 'pinia';
 
+// 如果您正在使用CDN引入，请删除下面一行。
+import * as ElementPlusIconsVue from '@element-plus/icons-vue';
+
 // 创建 Pinia 实例
 const pinia = createPinia();
 
-createApp(App).use(router).use(pinia).use(ElementPlus).mount('#app');
+const app = createApp(App).use(router).use(pinia).use(ElementPlus).mount('#app');

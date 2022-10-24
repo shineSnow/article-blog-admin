@@ -7,7 +7,8 @@ export const useMenuStore = defineStore('menu', {
       collapse: false,
       userInfo: { username: '' },
       roleInfo: { name: '', code: '' },
-      permissions: []
+      permissions: [],
+      menuTags: [{ fullPath: '/home', name: 'home', title: '首页' }]
     };
   },
   actions: {
@@ -20,6 +21,13 @@ export const useMenuStore = defineStore('menu', {
       this.userInfo = user;
       this.roleInfo = { code: role.roleCode, name: role.roleName };
       this.permissions = permissions;
+    },
+    addMenuTag(route: any) {
+      const { fullPath, name, meta } = route;
+      let flag = this.menuTags.some((item) => item.fullPath === fullPath);
+      if (!flag) {
+        this.menuTags.push({ fullPath, name, title: meta.title });
+      }
     }
   }
 });

@@ -1,5 +1,6 @@
 import Axios, { AxiosRequestConfig } from 'axios';
 import { ElMessage } from 'element-plus';
+import router from '@/router';
 import { wsCache } from './web-storage-cache';
 
 const baseURL = 'http://localhost:4000/api';
@@ -13,7 +14,6 @@ const axios = Axios.create({
 
 axios.interceptors.request.use(
   (config: any) => {
-    console.log('request', config);
     let token = wsCache.get('token');
 
     if (token) {
@@ -33,27 +33,29 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   (response) => {
     console.log('API RESPONSE', response);
-    if (!response.data) {
-      return Promise.reject();
-    }
+
     const { code, data, msg } = response.data;
 
-    if (code !== 200) {
-      ElMessage.error(` Message: ${msg}`);
-      console.error(`[Axios Error]`, data);
-      return Promise.reject({ status: code, message: msg });
+    if (code == 200) {
+      return response.data;
+    } else {
+      if (code == 401) {
+        console.log('router', router);
+
+        router.push({ path: '/login' });
+      }
+      ElMessage.error(`Code: ${code}, Message: ${msg}`);
     }
-    return response.data;
   },
   (error) => {
-    if (error.response && error.response.data) {
-      const code = error.response.status;
-      const msg = error.response.data.message;
-      ElMessage.error(`Code: ${code}, Message: ${msg}`);
-      console.error(`[Axios Error]`, error.response);
-    } else {
-      ElMessage.error(`${error}`);
-    }
+    console.error(`[Axios Error11111]`, error);
+    // if (error.response && error.response.data) {
+    //   const code = error.response.status;
+    //   const msg = error.response.data.message;
+    //   ElMessage.error(`Code: ${code}, Message: ${msg}`);
+    // } else {
+    //   ElMessage.error(`${error}`);
+    // }
     return Promise.reject(error);
   }
 );
