@@ -97,6 +97,8 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
+  const title = to.meta.title as string;
+
   const isAuthenticated = wsCache.get('token');
 
   if (
@@ -110,6 +112,8 @@ router.beforeEach(async (to, from, next) => {
   } else {
     next();
   }
+
+  document.title = title || '中策管理后台';
 });
 
 export default router;

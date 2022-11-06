@@ -1,19 +1,22 @@
 <template>
   <div class="home">
     <h6>首页</h6>
+    <HomeWrapper>
+      <template v-slot:footer>
+        <p>Here's some contact info</p>
+      </template>
+    </HomeWrapper>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue';
-  const input = ref('');
+  import HomeWrapper from './homewrapper.vue';
 </script>
 
 <style lang="scss" scoped>
   .home {
     height: 900px;
     color: #000;
-    border: 1px solid red;
     background-color: #fff;
   }
 </style>

@@ -14,7 +14,6 @@
         <el-main>
           <router-view :key="$route.path"></router-view>
         </el-main>
-        <el-footer>Footer</el-footer>
       </el-container>
     </el-container>
   </div>

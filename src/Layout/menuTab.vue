@@ -5,8 +5,8 @@
     </div>
     <el-scrollbar>
       <div class="scrollbar-flex-content">
-        <router-link v-for="item in menuTags" :to="item.fullPath" :key="item.fullPath">
-          <p class="scrollbar-item">
+        <router-link v-for="(item, index) in menuTags" :to="item.fullPath" :key="item.fullPath">
+          <p :class="['scrollbar-item', route.fullPath == item.fullPath ? 'active' : '']">
             {{ item.title }}
           </p>
         </router-link>
@@ -23,7 +23,7 @@
   import { useRoute } from 'vue-router';
   import { useMenuStore } from '@/store/menu';
   import { storeToRefs } from 'pinia';
-  import { watch } from 'vue';
+  import { watch, ref } from 'vue';
   const route = useRoute();
   const menuStore = useMenuStore();
   const { menuTags } = storeToRefs(menuStore);
@@ -42,8 +42,10 @@
       padding: 0 3px;
     }
     .scrollbar-flex-content {
+      flex: 1;
       display: flex;
     }
+
     .scrollbar-item {
       flex-shrink: 0;
       display: flex;
@@ -55,6 +57,9 @@
       text-align: center;
       border-radius: 4px;
       background: var(--el-color-primary-light-9);
+      color: #666;
+    }
+    .active {
       color: var(--el-color-primary);
     }
   }
