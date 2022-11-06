@@ -3,15 +3,17 @@
     <div class="left">
       <el-icon><ArrowLeft /></el-icon>
     </div>
-    <el-scrollbar>
-      <div class="scrollbar-flex-content">
-        <router-link v-for="(item, index) in menuTags" :to="item.fullPath" :key="item.fullPath">
-          <p :class="['scrollbar-item', route.fullPath == item.fullPath ? 'active' : '']">
-            {{ item.title }}
-          </p>
-        </router-link>
-      </div>
-    </el-scrollbar>
+    <div class="center">
+      <el-scrollbar>
+        <div class="scrollbar-flex-content">
+          <router-link v-for="(item, index) in menuTags" :to="item.fullPath" :key="item.fullPath">
+            <p :class="['scrollbar-item', route.fullPath == item.fullPath ? 'active' : '']">
+              {{ item.title }}
+            </p>
+          </router-link>
+        </div>
+      </el-scrollbar>
+    </div>
     <div class="right">
       <el-icon><ArrowRight /></el-icon>
     </div>
@@ -38,11 +40,13 @@
     .left {
       padding: 0 3px;
     }
+    .center {
+      flex: 1;
+    }
     .right {
       padding: 0 3px;
     }
     .scrollbar-flex-content {
-      flex: 1;
       display: flex;
     }
 
