@@ -55,9 +55,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-width: 100px;
-      height: 36px;
-      margin: 10px;
+      min-width: 80px;
+      height: 32px;
+      margin: 8px;
+      font-size: 12px;
       text-align: center;
       border-radius: 4px;
       background: var(--el-color-primary-light-9);
