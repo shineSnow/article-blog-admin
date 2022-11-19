@@ -7,11 +7,15 @@
   import { useRoute } from 'vue-router';
   import { useMenuStore } from '@/store/menu';
   import { wsCache } from '@/utils/web-storage-cache';
+  import router from './router';
 
   const menuStore = useMenuStore();
-  console.log('token', wsCache.get('toke1n'));
-  if (wsCache.get('token')) {
+  const token = wsCache.get('toke');
+  console.log('token111', wsCache.get('toke'));
+  if (token) {
     menuStore.fetchUserInfo();
+  } else {
+    // router.replace({ path: '/login' });
   }
 </script>
 

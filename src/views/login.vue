@@ -12,7 +12,9 @@
           </el-form-item>
         </el-form>
         <div class="bot-section">
-          <el-button type="primary" class="w-80 submitBtn" @click="submitForm(loginFormRef)">登录</el-button>
+          <el-button type="primary" size="large" class="w-80 submitBtn" @click="submitForm(loginFormRef)"
+            >登录</el-button
+          >
         </div>
       </div>
     </div>

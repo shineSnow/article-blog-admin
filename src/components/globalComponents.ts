@@ -1,6 +1,9 @@
 import TableForm from './TableForm/index.vue';
-
-const componentList = [{ name: 'TableForm', cmp: TableForm }];
+import PageHeader from './PageHeader/index.vue';
+const componentList = [
+  { name: 'TableForm', cmp: TableForm },
+  { name: 'PageHeader', cmp: PageHeader }
+];
 
 export function initGlobalComponent(app: any) {
   componentList.forEach((item) => {
