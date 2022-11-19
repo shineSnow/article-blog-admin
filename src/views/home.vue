@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <h6>首页</h6>
+    <TableForm></TableForm>
     <HomeWrapper>
       <template v-slot:footer>
         <p>Here's some contact info</p>

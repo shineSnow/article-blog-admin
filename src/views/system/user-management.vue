@@ -1,5 +1,5 @@
 <template>
-  <div class="user-page"></div>
+  <div class="user-page">user management</div>
 </template>
 
 <script setup lang="ts"></script>
