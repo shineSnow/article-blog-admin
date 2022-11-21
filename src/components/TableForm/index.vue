@@ -30,7 +30,10 @@
             :label="columnItem.label"
             :width="columnItem.width ? columnItem.width : null"
           >
-            <template #default="scope"> {{ renderFn('div', { id: 'foo' }, 'hello') }} </template>
+            <template #default="scope">
+              {{ renderFn('div', { id: 'foo' }, 'hello') }}
+              <Expand :row="scope" ,:renderFn="columnItem.render"></Expand>
+            </template>
           </el-table-column>
           <el-table-column
             v-else
@@ -46,6 +49,7 @@
 </template>
 
 <script setup lang="ts">
+  import Expand from './expand';
   import { h } from 'vue';
 
   import { ElForm, ElFormItem, ElInput, ElSelect, ElOption, ElButton } from 'element-plus';
