@@ -5,6 +5,7 @@ import Home from '@/views/home.vue';
 import Vuex from '@/views/vuex.vue';
 import Layout from '@/Layout/index.vue';
 import { wsCache } from '@/utils/web-storage-cache';
+import { log } from 'console';
 
 const dynmicRoutes = [
   {
@@ -100,6 +101,8 @@ router.beforeEach(async (to, from, next) => {
   const title = to.meta.title as string;
 
   const isAuthenticated = wsCache.get('token');
+
+  console.log('获取token', isAuthenticated);
 
   if (
     // 检查用户是否已登录

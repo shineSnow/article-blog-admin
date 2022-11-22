@@ -1,6 +1,6 @@
 <template>
   <div class="user-page">
-    <TableForm :searchList="searchList" :tableInfo="tableInfo"></TableForm>
+    <TableForm :searchList="searchList" :tableInfo="tableInfo" api="/system/user/list"></TableForm>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
   const searchList = reactive([
     {
       label: '用户名',
-      key: 'username'
+      key: 'userName'
     },
     {
       label: 'level',
@@ -27,29 +27,38 @@
   const tableInfo = reactive({
     columnList: [
       {
-        label: 'id',
+        label: 'ID',
         prop: 'id'
       },
       {
-        label: 'name',
-        prop: 'name'
+        label: '用户名',
+        prop: 'userName'
       },
       {
-        label: 'level',
-        prop: 'level'
+        label: '邮件',
+        prop: 'email'
       },
       {
-        label: 'action',
+        label: '性别',
+        prop: 'sex'
+      },
+      {
+        label: '角色',
         render: (h: (arg0: string, arg1: {}, arg2: string) => any, p: any) => {
-          return h('div', { id: 'foo' }, 'hello');
+          return h('div', { id: 'foo' }, `${p.row.role.roleCode}:${p.row.role.roleName}`);
         }
-      }
-    ],
-    dataList: [
+      },
       {
-        id: 1111,
-        name: 'name',
-        level: '111'
+        label: '操作',
+        render: (h: (arg0: string, arg1: {}, arg2?: string | Array<any>) => any, p: any) => {
+          return h('div', {}, [
+            h('Button', {
+              props: {
+                type: 'primary'
+              }
+            })
+          ]);
+        }
       }
     ]
   });
@@ -58,6 +67,5 @@
 <style scoped lang="scss">
   .user-page {
     border: 1px soldi red;
-    height: 9000px;
   }
 </style>

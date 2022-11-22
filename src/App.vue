@@ -10,7 +10,7 @@
   import router from './router';
 
   const menuStore = useMenuStore();
-  const token = wsCache.get('toke');
+  const token = wsCache.get('token');
   console.log('token111', wsCache.get('toke'));
   if (token) {
     menuStore.fetchUserInfo();

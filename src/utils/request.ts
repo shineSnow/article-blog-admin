@@ -37,7 +37,7 @@ axios.interceptors.response.use(
     const { code, data, msg } = response.data;
 
     if (code == 200) {
-      return response.data;
+      return data;
     } else {
       if (code == 401) {
         console.log('router', router);
