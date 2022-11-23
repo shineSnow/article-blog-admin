@@ -51,7 +51,7 @@
   const submitForm = async (formEl: FormInstance) => {
     await formEl.validate(async (valid, fields) => {
       if (valid) {
-        const { data } = await login(loginForm);
+        const data = await login(loginForm);
         wsCache.set('token', data);
         router.push({ path: '/' });
         ElMessage.success('登录成功！');

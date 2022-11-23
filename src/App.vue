@@ -11,11 +11,11 @@
 
   const menuStore = useMenuStore();
   const token = wsCache.get('token');
-  console.log('token111', wsCache.get('toke'));
+  console.log('token111', wsCache.get('token'));
   if (token) {
     menuStore.fetchUserInfo();
   } else {
-    // router.replace({ path: '/login' });
+    router.replace({ path: '/login' });
   }
 </script>
 

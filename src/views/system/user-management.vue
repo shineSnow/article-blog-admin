@@ -5,7 +5,8 @@
 </template>
 
 <script setup lang="ts">
-  import { reactive } from 'vue';
+  import { ElButton } from 'element-plus';
+  import { Component, reactive } from 'vue';
 
   const searchList = reactive([
     {
@@ -50,13 +51,22 @@
       },
       {
         label: '操作',
-        render: (h: (arg0: string, arg1: {}, arg2?: string | Array<any>) => any, p: any) => {
+        render: (h: (arg0: string | Component, arg1: {}, arg2?: any) => any, p: any) => {
           return h('div', {}, [
-            h('Button', {
-              props: {
+            h(
+              ElButton,
+              {
                 type: 'primary'
-              }
-            })
+              },
+              '编辑'
+            ),
+            h(
+              ElButton,
+              {
+                type: 'danger'
+              },
+              '删除'
+            )
           ]);
         }
       }
