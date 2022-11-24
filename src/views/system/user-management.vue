@@ -1,6 +1,10 @@
 <template>
   <div class="user-page">
-    <TableForm :searchList="searchList" :tableInfo="tableInfo" api="/system/user/list"></TableForm>
+    <TableForm :searchList="searchList" :tableInfo="tableInfo" api="/system/user/list">
+      <template #tableCenter>
+        <el-button type="primary">创建</el-button>
+      </template>
+    </TableForm>
   </div>
 </template>
 

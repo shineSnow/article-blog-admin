@@ -20,6 +20,9 @@
         </el-form-item>
       </el-form>
     </div>
+    <div class="extra-section">
+      <slot name="tableCenter"></slot>
+    </div>
     <div class="table-section">
       <el-table :data="dataList" border style="width: 100%">
         <template v-for="columnItem in tableInfo.columnList">
@@ -174,7 +177,10 @@
       border-radius: 8px;
       margin-bottom: 30px;
     }
+    .extra-section {
+    }
     .table-section {
+      background-color: #fff;
     }
     .pagenation-section {
       display: flex;
