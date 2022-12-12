@@ -2,7 +2,9 @@
   <div class="user-page">
     <TableForm :searchList="searchList" :tableInfo="tableInfo" api="/system/user/list">
       <template #tableCenter>
-        <el-button type="primary">创建</el-button>
+        <div class="middle-section">
+          <el-button type="primary">创建</el-button>
+        </div>
       </template>
     </TableForm>
   </div>
@@ -81,5 +83,8 @@
 <style scoped lang="scss">
   .user-page {
     border: 1px soldi red;
+    .middle-section {
+      margin-bottom: 15px;
+    }
   }
 </style>

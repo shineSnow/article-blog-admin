@@ -8,8 +8,8 @@
           </el-form-item>
 
           <el-form-item :label="`${searchItem.label}：`" v-if="searchItem.type === 'select'" :prop="searchItem.key">
-            <el-select v-model="serchParams[searchItem.key]" placeholder="请选择">
-              <el-option :label="opts.label" value="opts.value" v-for="opts in searchItem.options" />
+            <el-select v-model="serchParams[searchItem.key]" placeholder="请选择" clearable>
+              <el-option :label="opts.label" :value="opts.value" v-for="opts in searchItem.options" />
             </el-select>
           </el-form-item>
         </template>
@@ -146,7 +146,7 @@
   // 当前页发生变化
   function handleCurrentChange(page: number) {
     pagination.currentPage = page;
-    // iniApi();
+    iniApi();
   }
 
   // 初始化接口请求
@@ -180,6 +180,7 @@
       margin-bottom: 30px;
     }
     .extra-section {
+      // background-color: #fff;
     }
     .table-section {
       background-color: #fff;
