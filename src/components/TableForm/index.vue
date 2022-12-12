@@ -53,7 +53,7 @@
         v-model:current-page="pagination.currentPage"
         v-model:page-size="pagination.pageSize"
         :page-sizes="[100, 200, 300, 400]"
-        :small="false"
+        :small="small"
         :disabled="false"
         :background="true"
         layout="total, sizes, prev, pager, next, jumper"
@@ -111,7 +111,9 @@
     }
   });
 
+  const background = ref('#fff');
   onMounted(() => {
+    console.log('onMounted');
     iniApi();
   });
 
@@ -122,7 +124,7 @@
 
   // 查询
   function onSearch() {
-    console.log('查询', serchParams);
+    console.log('查询??', serchParams);
     iniApi();
   }
   // 重置
@@ -144,7 +146,7 @@
   // 当前页发生变化
   function handleCurrentChange(page: number) {
     pagination.currentPage = page;
-    iniApi();
+    // iniApi();
   }
 
   // 初始化接口请求

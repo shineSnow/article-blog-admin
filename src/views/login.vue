@@ -51,11 +51,13 @@
   const submitForm = async (formEl: FormInstance) => {
     await formEl.validate(async (valid, fields) => {
       if (valid) {
-        const data = await login(loginForm);
-        wsCache.set('token', data);
-        router.push({ path: '/' });
-        ElMessage.success('登录成功！');
-        menuStore.fetchUserInfo();
+        try {
+          const data = await login(loginForm);
+          wsCache.set('token', data);
+          router.push({ path: '/' });
+          ElMessage.success('登录成功！');
+          menuStore.fetchUserInfo();
+        } catch (error) {}
       }
     });
   };
